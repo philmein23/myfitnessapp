@@ -8,10 +8,16 @@ export default function Home() {
         <title>Create Next App</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <nav className={styles.navigation}>Navigation</nav>
-      <main className={styles.main}>
-        <h1 className={styles["main-title"]}>My Fitness</h1>
-      </main>
+      <nav className={styles.navigation}>
+        <div>
+          <h1 className={styles["logo"]}>My Fitness</h1>
+        </div>
+        <ul className={styles["nav-links"]}>
+          <li>Home</li>
+          <li>My Schedule</li>
+        </ul>
+      </nav>
+      <main className={styles.main}></main>
 
       <footer className={styles.footer}>Footer</footer>
     </div>

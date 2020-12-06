@@ -9,7 +9,29 @@
 .navigation {
   background-color: #000;
   width: 100%;
-  height: 50px;
+  height: 65px;
+  color: #fff;
+  display: flex;
+  padding: 0 15px;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-links {
+  display: flex;
+}
+
+.nav-links > li {
+  margin-left: 20px;
+  cursor: pointer;
+}
+
+.logo {
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+  letter-spacing: 1.5px;
 }
 
 .main {
