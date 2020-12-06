@@ -8,8 +8,10 @@ export default function Home() {
         <title>Create Next App</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
-      <main className={styles.main}>Lets Start Splash Page</main>
+      <nav className={styles.navigation}>Navigation</nav>
+      <main className={styles.main}>
+        <h1 className={styles["main-title"]}>My Fitness</h1>
+      </main>
 
       <footer className={styles.footer}>Footer</footer>
     </div>
