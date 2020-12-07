@@ -15,7 +15,8 @@ const Layout: React.FC = ({ children }) => {
         </div>
         <ul className={styles["nav-links"]}>
           <li>Home</li>
-          <li>My Schedule</li>
+          <li>Programs</li>
+          <li>New Program</li>
         </ul>
       </nav>
       <main className={styles.main}>{children}</main>
