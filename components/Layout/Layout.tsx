@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Link from "next/link";
 
 import styles from "./Layout.module.css";
 
@@ -11,12 +12,17 @@ const Layout: React.FC = ({ children }) => {
       </Head>
       <nav className={styles.navigation}>
         <div>
-          <h1 className={styles["logo"]}>My Fitness</h1>
+          <Link href="/">
+            <h1 className={styles["logo"]}>My Fitness</h1>
+          </Link>
         </div>
         <ul className={styles["nav-links"]}>
-          <li>Home</li>
-          <li>Programs</li>
-          <li>New Program</li>
+          <li>
+            <Link href="/programs">Programs</Link>
+          </li>
+          <li>
+            <Link href="/new-program">New Program</Link>
+          </li>
         </ul>
       </nav>
       <main className={styles.main}>{children}</main>

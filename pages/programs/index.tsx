@@ -1,4 +1,4 @@
-import styles from "./index.module.css";
+import styles from "./programs.module.css";
 
 const Programs: React.FC = () => {
   return (

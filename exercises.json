@@ -1,0 +1,39 @@
+{
+    "exercises": [
+        {   
+            "id": 1,
+            "name": "Lat Pulldown",
+            "target": "Latissimus Dorsi, Rhomboids"
+        },
+        {   
+            "id": 2,
+            "name": "Wide-grip Pull ups",
+            "target": "Latissimus Dorsi, Rhomboids"
+        },
+        {   
+            "id": 3,
+            "name": "Flat Dumbbell Chest Press",
+            "target": "Middle Pectorals"
+        },
+        {   
+            "id": 4,
+            "name": "Incline Dumbbell Chest Press",
+            "target": "Upper Pectorals"
+        },
+        {   
+            "id": 5,
+            "name": "Decline Dumbbell Chest Press",
+            "target": "Lower Pectorals"
+        },
+        {   
+            "id": 6,
+            "name": "Dumbbell Shrugs",
+            "target": "Trapezious"
+        },
+        {   
+            "id": 7,
+            "name": "Lateral Raises",
+            "target": "Anterior Deltoids"
+        }
+    ]
+}
