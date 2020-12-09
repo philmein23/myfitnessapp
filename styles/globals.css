@@ -25,6 +25,10 @@ label {
   display: block;
 }
 
+h2 {
+  letter-spacing: 1.5px;
+}
+
 input {
   line-height: 2px;
   font-size: 14px;
