@@ -13,7 +13,7 @@
 }
 
 .exercise-list {
-  padding: 10px 15px;
+  padding: 20px;
 }
 
 .checkbox {
@@ -56,7 +56,17 @@
 }
 
 .exercise-form {
-  padding: 10px 15px;
+  padding: 20px;
+}
+
+.flex-form {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.program-exercise-list {
+  flex-grow: 1;
 }
 
 .program-exercise-info {
@@ -90,4 +100,15 @@
 .sets-input,
 .reps-input {
   width: 60px;
+}
+
+.btn {
+  border: 0;
+  border-radius: 4px;
+  background-color: #41b883;
+  color: #fff;
+  font-size: 15px;
+  padding: 10px 8px;
+  cursor: pointer;
+  letter-spacing: 1.5px;
 }
