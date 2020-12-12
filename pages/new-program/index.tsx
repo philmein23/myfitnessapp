@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import useLocalStorage from "@hooks/useLocalStorage/useLocalStorage";
 
 import styles from "./new-program.module.css";
 
@@ -19,6 +20,10 @@ interface ProgramExercise {
 const NewProgram: React.FC = () => {
   const [exercises, setExercises] = useState([]);
   const [programExercises, addExerciseToProgram] = useState([]);
+  const [programName, setProgramName] = useState("");
+  const [storedValue, setValue] = useLocalStorage("all-programs", []);
+
+  console.log(storedValue);
 
   useEffect(() => {
     import("../../exercises.json").then((data) => {
@@ -68,8 +73,13 @@ const NewProgram: React.FC = () => {
 
   const handleSubmitProgram = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    console.log("submit!");
-    console.log(programExercises);
+
+    const newProgram = {
+      programName,
+      programExercises,
+    };
+
+    setValue([...storedValue, newProgram]);
   };
 
   return (
@@ -97,7 +107,13 @@ const NewProgram: React.FC = () => {
         <form className={styles["flex-form"]}>
           <div>
             <label htmlFor="program-name">Program Name</label>
-            <input type="text" name="program-name" id="program-name" />
+            <input
+              type="text"
+              name="program-name"
+              id="program-name"
+              value={programName}
+              onChange={(e) => setProgramName(e.target.value)}
+            />
           </div>
           <div className={styles["program-exercise-list"]}>
             <h2>Exercises</h2>
