@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import useLocalStorage from "@hooks/useLocalStorage/useLocalStorage";
+import Icon from "@components/Icon/Icon";
 
 import styles from "./new-program.module.css";
 
