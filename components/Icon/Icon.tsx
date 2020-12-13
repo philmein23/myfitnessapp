@@ -12,7 +12,7 @@ interface IconProps {
 
 const Icon: React.FC<IconProps> = ({ icon, width, height, fill }) => {
   return (
-    <svg fill={fill} width={width} height={height} viewBox="0 0 1024 1024">
+    <svg fill={fill} width={width} height={height} viewBox="0 0 500 500">
       <path d={icons[icon]}></path>
     </svg>
   );

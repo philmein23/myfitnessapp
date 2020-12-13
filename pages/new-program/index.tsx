@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import Link from "next/link";
+
 import useLocalStorage from "@hooks/useLocalStorage/useLocalStorage";
 import Icon from "@components/Icon/Icon";
 
@@ -23,6 +25,7 @@ const NewProgram: React.FC = () => {
   const [programExercises, addExerciseToProgram] = useState([]);
   const [programName, setProgramName] = useState("");
   const [storedValue, setValue] = useLocalStorage("all-programs", []);
+  const [isAdded, setAdded] = useState(false);
 
   console.log(storedValue);
 
@@ -80,92 +83,126 @@ const NewProgram: React.FC = () => {
       programExercises,
     };
 
-    setValue([...storedValue, newProgram]);
+    setTimeout(() => {
+      Promise.resolve(setValue([...storedValue, newProgram])).then(() => {
+        setAdded(true);
+      });
+    }, 1500);
   };
 
-  return (
-    <section className={styles["new-programs-container"]}>
-      <div className={styles["exercise-list"]}>
-        {exercises?.map((exercise: Exercise) => (
-          <ul>
-            <li>
-              <label className={styles.checkbox}>
-                <input
-                  name="exercise"
-                  type="checkbox"
-                  onChange={(e) => handleCheckboxChange(e, exercise.id)}
-                />
-                <div>
-                  <span>{exercise.name}</span>
-                  <span>{exercise.target}</span>
-                </div>
-              </label>
-            </li>
-          </ul>
-        ))}
-      </div>
-      <div className={styles["exercise-form"]}>
-        <form className={styles["flex-form"]}>
-          <div>
-            <label htmlFor="program-name">Program Name</label>
-            <input
-              type="text"
-              name="program-name"
-              id="program-name"
-              value={programName}
-              onChange={(e) => setProgramName(e.target.value)}
-            />
-          </div>
-          <div className={styles["program-exercise-list"]}>
-            <h2>Exercises</h2>
+  const resetNewProgramPage = (e) => {
+    e.preventDefault();
+    setProgramName("");
+    addExerciseToProgram([]);
+    setAdded(false);
+  };
+
+  const renderNewProgramForm = () => {
+    return (
+      <section className={styles["new-programs-container"]}>
+        <div className={styles["exercise-list"]}>
+          {exercises?.map((exercise: Exercise) => (
             <ul>
-              {programExercises?.length ? (
-                programExercises.map((programExercise: ProgramExercise) => (
-                  <li className={styles["program-exercise-info"]}>
-                    <span>{programExercise.name}</span>
-                    <div className={styles["sets-container"]}>
-                      <label htmlFor="sets">Sets</label>
-                      <input
-                        className={styles["sets-input"]}
-                        type="number"
-                        name="sets"
-                        id="sets"
-                        onChange={(e) => handleSetReps(e, programExercise.id)}
-                      />
-                    </div>
-                    <div className={styles["reps-container"]}>
-                      <label htmlFor="reps">Reps</label>
-                      <input
-                        className={styles["reps-input"]}
-                        type="number"
-                        name="reps"
-                        id="reps"
-                        onChange={(e) => handleSetReps(e, programExercise.id)}
-                      />
-                    </div>
-                  </li>
-                ))
-              ) : (
-                <p>
-                  Please select one or more exercise from the list to the left
-                  side of the form.
-                </p>
-              )}
+              <li>
+                <label className={styles.checkbox}>
+                  <input
+                    name="exercise"
+                    type="checkbox"
+                    onChange={(e) => handleCheckboxChange(e, exercise.id)}
+                  />
+                  <div>
+                    <span>{exercise.name}</span>
+                    <span>{exercise.target}</span>
+                  </div>
+                </label>
+              </li>
             </ul>
-          </div>
-          <div>
-            <button
-              onClick={handleSubmitProgram}
-              className={styles.btn}
-              type="submit"
-            >
-              Add Program
-            </button>
-          </div>
-        </form>
-      </div>
-    </section>
-  );
+          ))}
+        </div>
+        <div className={styles["exercise-form"]}>
+          <form className={styles["flex-form"]}>
+            <div>
+              <label htmlFor="program-name">Program Name</label>
+              <input
+                type="text"
+                name="program-name"
+                id="program-name"
+                value={programName}
+                onChange={(e) => setProgramName(e.target.value)}
+              />
+            </div>
+            <div className={styles["program-exercise-list"]}>
+              <h2>Exercises</h2>
+              <ul>
+                {programExercises?.length ? (
+                  programExercises.map((programExercise: ProgramExercise) => (
+                    <li className={styles["program-exercise-info"]}>
+                      <span>{programExercise.name}</span>
+                      <div className={styles["sets-container"]}>
+                        <label htmlFor="sets">Sets</label>
+                        <input
+                          className={styles["sets-input"]}
+                          type="number"
+                          name="sets"
+                          id="sets"
+                          onChange={(e) => handleSetReps(e, programExercise.id)}
+                        />
+                      </div>
+                      <div className={styles["reps-container"]}>
+                        <label htmlFor="reps">Reps</label>
+                        <input
+                          className={styles["reps-input"]}
+                          type="number"
+                          name="reps"
+                          id="reps"
+                          onChange={(e) => handleSetReps(e, programExercise.id)}
+                        />
+                      </div>
+                    </li>
+                  ))
+                ) : (
+                  <p>
+                    Please select one or more exercise from the list to the left
+                    side of the form.
+                  </p>
+                )}
+              </ul>
+            </div>
+            <div>
+              <button
+                onClick={handleSubmitProgram}
+                className={styles.btn}
+                type="submit"
+              >
+                Add Program
+              </button>
+            </div>
+          </form>
+        </div>
+      </section>
+    );
+  };
+
+  const renderSuccessDisplay = () => {
+    return (
+      <section className={styles["new-program-container-success"]}>
+        <div className={styles["return-to-new-program"]}>
+          <button
+            className={styles["return-new-program-btn"]}
+            onClick={resetNewProgramPage}
+          >
+            Return to New Program
+          </button>
+        </div>
+        <Icon icon="checkmark" fill="green" width="150" height="200" />
+        <div className={styles["success-info"]}>
+          <p>{programName} has been added!</p>
+        </div>
+      </section>
+    );
+  };
+
+  return <>{isAdded ? renderSuccessDisplay() : renderNewProgramForm()}</>;
 };
 
 export default NewProgram;

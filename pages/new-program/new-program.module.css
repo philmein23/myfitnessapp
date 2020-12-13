@@ -7,6 +7,40 @@
   gap: 15px;
 }
 
+.new-program-container-success {
+  margin: 65px auto;
+  width: 100%;
+  max-width: 800px;
+  background-color: #000;
+  opacity: 0.85;
+  display: grid;
+  place-items: center;
+}
+
+.success-info {
+  text-align: center;
+}
+
+.return-to-new-program {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  padding: 10px 8px;
+}
+
+.return-new-program-btn {
+  border: 0;
+  background-color: transparent;
+  color: #fff;
+  cursor: pointer;
+  font-size: 15px;
+  font-family: inherit;
+}
+
+.return-new-program-btn:hover {
+  text-decoration: underline;
+}
+
 .new-programs-container > div {
   background-color: #000;
   opacity: 0.85;
