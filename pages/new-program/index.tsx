@@ -28,8 +28,6 @@ const NewProgram: React.FC = () => {
   const [isAdded, setAdded] = useState(false);
   const [isProcessing, setProcessing] = useState(false);
 
-  console.log(storedValue);
-
   useEffect(() => {
     import("../../exercises.json").then((data) => {
       setExercises(data.exercises);
