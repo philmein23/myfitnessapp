@@ -26,6 +26,7 @@ const NewProgram: React.FC = () => {
   const [programName, setProgramName] = useState("");
   const [storedValue, setValue] = useLocalStorage("all-programs", []);
   const [isAdded, setAdded] = useState(false);
+  const [isProcessing, setProcessing] = useState(false);
 
   console.log(storedValue);
 
@@ -83,8 +84,11 @@ const NewProgram: React.FC = () => {
       programExercises,
     };
 
+    setProcessing(true);
+
     setTimeout(() => {
       Promise.resolve(setValue([...storedValue, newProgram])).then(() => {
+        setProcessing(false);
         setAdded(true);
       });
     }, 1500);
@@ -170,11 +174,12 @@ const NewProgram: React.FC = () => {
             </div>
             <div>
               <button
+                disabled={isProcessing}
                 onClick={handleSubmitProgram}
                 className={styles.btn}
                 type="submit"
               >
-                Add Program
+                {isProcessing ? renderProcessingDisplay() : "Add Program"}
               </button>
             </div>
           </form>
@@ -199,6 +204,17 @@ const NewProgram: React.FC = () => {
           <p>{programName} has been added!</p>
         </div>
       </section>
+    );
+  };
+
+  const renderProcessingDisplay = () => {
+    return (
+      <>
+        <span className={`${styles["loader"]} ${styles["loader-bars"]}`}>
+          <span></span>
+        </span>
+        Processing...
+      </>
     );
   };
 
