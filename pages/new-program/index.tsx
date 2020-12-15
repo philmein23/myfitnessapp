@@ -199,7 +199,9 @@ const NewProgram: React.FC = () => {
             Return to New Program
           </button>
         </div>
-        <Icon icon="checkmark" fill="green" width="150" height="200" />
+        <div>
+          <Icon icon="checkmark" fill="green" width="150" height="200" />
+        </div>
         <div className={styles["success-info"]}>
           <p>{programName} has been added!</p>
         </div>

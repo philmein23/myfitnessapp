@@ -13,8 +13,10 @@
   max-width: 800px;
   background-color: #000;
   opacity: 0.85;
-  display: grid;
-  place-items: center;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .success-info {
