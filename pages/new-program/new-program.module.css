@@ -5,6 +5,19 @@
   display: grid;
   grid-template-columns: 300px 1fr;
   gap: 15px;
+  animation: fadeInTopEntrace 0.5s ease-in-out forwards;
+}
+
+@keyframes fadeInTopEntrace {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .new-program-container-success {

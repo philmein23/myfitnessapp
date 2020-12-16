@@ -45,6 +45,7 @@
   color: #fff;
   position: relative;
   margin: 0 auto;
+  display: flex;
 }
 
 .main::before {
