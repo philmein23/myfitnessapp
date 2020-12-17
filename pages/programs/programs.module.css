@@ -22,6 +22,7 @@
 .program-item:hover {
   border: 3px solid #fff;
   opacity: 0.8;
+  transform: scale(1.05);
 }
 
 @keyframes program {

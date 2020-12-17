@@ -22,12 +22,32 @@
   display: flex;
 }
 
+.nav-links > li {
+  position: relative;
+  padding: 10px 0;
+}
+
 .nav-links > li:hover {
-  color: rgba(120, 2, 6, 1);
+  color: #fff;
+}
+
+.nav-links > li:after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #fff;
+  transition: all 0.2s ease-in-out;
+}
+
+.nav-links > li:hover:after {
+  width: 100%;
 }
 
 .nav-links > li {
-  margin-left: 20px;
+  margin-left: 30px;
   cursor: pointer;
 }
 
